@@ -38,10 +38,6 @@ vfs:mount("test", myVirtualAdapter)
 
 vfs:writeFileSync("test://myfile.txt", "test text") -- Write 'test text' to the file in the virtual adapter
 print(vfs:readFileSync("test://myfile.txt"))        -- Should read and print 'test text'
-
--- Alternatively for non-action functions, the URI scheme can be dropped
--- This scans all mounted VirtualAdapters
-print(vfs:readFileSync("myfile.txt"))
 ```
 
 ### adapters
