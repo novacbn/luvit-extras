@@ -1,0 +1,10 @@
+name:		"luvit-extras"
+author:		"novacbn"
+version:	"0.1.0"
+repository:	"github://novacbn/luvit-extras"
+
+projectBuilds: 
+	"novacbn/luvit-extras/exports": "luvit-extras"
+
+Packager:
+	targetPlatform: "lua"
