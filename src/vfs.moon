@@ -11,12 +11,12 @@ PATTERN_URI_SCHEME = "^(%l[%l%d%-]*)$"
 -- ::PATTERN_URI_PARTS -> string
 -- Represents a Lua pattern to validate and extract URI parts
 --
-PATTERN_URI_PARTS = "^(%l[%l%d%-]*)://([%w%-%./]*)$"
+PATTERN_URI_PARTS = "^(%l[%l%d%-]*)://([%w%-%./_]*)$"
 
 -- ::PATTERN_URI_PATH -> string
 -- Represents a Lua pattern to validate and extract the URI path
 --
-PATTERN_URI_PATH = "^([%w%-%./]+)$"
+PATTERN_URI_PATH = "^([%w%-%./_]+)$"
 
 -- ::makeAdapterBind(string method, boolean isAction) -> any
 -- Makes an adapter bind to automatically handle adapter selection
@@ -39,7 +39,7 @@ makeAdapterBind = (method, isAction) ->
 export VirtualAdapter = with Emitter\extend()
     -- VirtualAdapter::readOnly -> boolean
     -- Represents if the VirtualAdapter is readable
-    -- export
+    --
     .readOnly = false
 
     -- VirtualAdapter::initialize(boolean readOnly) -> void
@@ -114,6 +114,16 @@ export VirtualFileSystem = with Object\extend()
     -- Synchronous variant of `access`
     --
     .accessSync = makeAdapterBind("accessSync")
+
+    -- VirtualFileSystem::mkdir(string uri, function callback) -> void
+    --
+    --
+    .mkdir = makeAdapterBind("mkdir")
+
+    -- VirtualFileSystem:mkdirSync(string uri) -> void
+    -- Synchronous variant of `readdir`
+    --
+    .mkdirSync = makeAdapterBind("mkdirSync")
 
     -- VirtualFileSystem::readdir(string uri, function callback) -> void
     -- Returns the filesystem entries in the URI

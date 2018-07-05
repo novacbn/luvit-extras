@@ -2,7 +2,7 @@ import type from _G
 import gsub from string
 
 import
-    access, accessSync, exists, existsSync,
+    access, accessSync, mkdir, mkdirSync,
     readdir, readdirSync, readFile, readFileSync,
     rename, renameSync, rmdir, rmdirSync,
     stat, statSync, unlink, unlinkSync,
@@ -97,6 +97,16 @@ export FileSystemAdapter = with VirtualAdapter\extend()
     --
     .accessSync = makeResolvedFunction(accessSync)
 
+    -- FileSystemAdaper::mkdir(string directory, function callback) -> void
+    --
+    --
+    .mkdir = makeResolvedFunction(mkdir, true)
+
+    -- FileSystemAdapter::mkdirSync(string directory) -> void
+    --
+    --
+    .mkdirSync = makeResolvedFunction(mkdirSync)
+
     -- FileSystemAdapter::readdir(string directory, function callback) -> void
     --
     --
@@ -105,7 +115,7 @@ export FileSystemAdapter = with VirtualAdapter\extend()
     -- FileSystemAdapter::readdirSync(string directory) -> table
     --
     --
-    .readdirSync = makeResolvedFunction(readdirSync, false)
+    .readdirSync = makeResolvedFunction(readdirSync)
 
     -- FileSystemAdapter::readFile(string file, function callback) -> void
     --
